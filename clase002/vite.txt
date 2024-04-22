@@ -1,0 +1,89 @@
+# Vite
+Vite es un bundler moderno para la web.
+
+¿Qué es un bundler, se preguntan?
+Un bundler (de "bundle" que significa "agrupar" o "paquete") es un programa
+que se encarga de aplicar acciones sobre nuestro código para generar un
+resultado "agrupado" o "empaquetado".
+La idea es que este resultado sea una versión mucho más optimizada para
+la web que nuestro código original.
+
+Los bundlers pueden realizar múltiples tareas que hacen que nuestra experiencia
+de desarrollo sea mucho más placentera:
+- Minificación de nuestro código para producción.
+- Concatenación de múltiples archivos en uno o solo, o por "chunks" (pedazos).
+- Transformación de nuestro código a través de otros programas. Esto permite,
+    por ejemplo, que usemos cosas que no están disponibles en los browsers
+    en nuestro proyecto.
+    Por ejemplo:
+    - Última generación de ECMAScript, incluyendo "proposals" que no estén
+        todavía definidas del todo.
+    - Herramientas como TypeScript o Tailwind.
+- Optimización de recursos, como imágenes o tipografías.
+- Etc.
+
+Esto es esencial en el desarrollo de aplicaciones complejas hoy en día.
+Si bien el lenguaje de JS evoluciona para simplificarnos algunas cosas,
+la complejidad de las aplicaciones crece exponencialmente.
+
+## Usando Vite
+https://vitejs.dev/
+
+Empezamos por crear nuestro proyecto con Vite:
+
+    npm create vite@latest
+
+Siguiendo las preguntas que nos muestra, podemos crear un proyecto.
+
+Esto va a crear apenas la carpeta, el [package.json] y no mucho más.
+Para instalar las dependencias necesarias, tenemos que ingresar a la
+carpeta del proyecto que creamos, y ejecutar el comando para instalar
+los paquetes:
+
+    npm install
+
+Una vez instalados, ya podemos empezar a correr nuestro proyecto de Vite.
+Para hacerlo, podemos usar el servidor de desarrollo ("Dev server") que
+viene con Vite, usando el comando:
+
+    npm run dev
+
+## Servidor de desarrollo
+El "dev server" de Vite trae varias bondades, incluyendo:
+- HMR (Hot Module Replacement) y Live Reload.
+    Live Reload es una técnica en que el browser se refresca automáticamente
+    cuando el código que está usando cambia.
+    HMR, en cambio, es un paso más allá. Aprovechando técnicas más modernas,
+    en algunos casos, puede cambiar el contenido del proyecto que el browser
+    está mostrando sin tener que refrescar.
+
+
+## Estructura de un proyecto de Vite
+El proyecto que creamos viene con algunos archivos de base.
+Varios de ellos son solo para el ejemplo básico que trae. Por ejemplo, el
+logo de Vite, el logo de JS o el script de "counter.js".
+
+Pero hay algunos elementos que sí son importantes que estén:
+- index.html
+    Por defecto, este *siempre* es el punto de inicio del proyecto de Vite.
+    Se puede configurar, si así se desea.
+- public/
+    Esta carpeta es la que, por defecto, contiene los recursos "estáticos"
+    del proyecto ("static assets") que queremos que puedan ser accedidos
+    desde la web.
+- package.json & package-lock.json
+    Los archivos de npm. No tiene que ver con Vite, pero los
+    listamos igual.
+
+## Creando el "build" de producción
+Cuando estamos listos con nuestro proyecto, y queremos finalmente poder
+publicarlo, no podemos subir los archivos que estamos escribiendo.
+Esos archivos puede muy perfectamente no ser compatibles con un browser.
+
+Es por eso que Vite trae un comando para generar un "build" optimizado para
+producción, listo para "dist"ribuir.
+
+Solo tenemos que correr el comando:
+
+    npm run build
+

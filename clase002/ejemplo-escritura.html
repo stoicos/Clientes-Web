@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplo Firestore</title>
+</head>
+<body>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBYx5jNNpraeYTeS64gHZhKouoKFNUq1KI",
+          authDomain: "mi-proyecto-bf3c1.firebaseapp.com",
+          projectId: "mi-proyecto-bf3c1",
+          storageBucket: "mi-proyecto-bf3c1.appspot.com",
+          messagingSenderId: "765680600549",
+          appId: "1:765680600549:web:194d6463a1202196469b0c"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Obtenemos la conexión a Firestore.
+        const db = getFirestore(app);
+
+        // Para poder trabajar con cualquier dato en Firestore, no importa
+        // si es un documento o una colección, ni si es para escritura o
+        // lectura, vamos a necesitar primero crear una "referencia" a 
+        // ese recurso.
+        // Si el recurso es una colección, creamos la referencia con collection().
+        // Si es un documento, usaremos doc().
+        const refChat = collection(db, 'chat');
+
+        // A través de estas referencias, podemos realizar las acciones de
+        // lectura o escritura.
+        // Por ejemplo, la función getDocs() recibe la referencia de una 
+        // colección y nos retorna una promesa que se resuelve cuando 
+        // recibimos *todos* los documentos que contiene.
+        // Los documentos llegan como un "Snapshot".
+        getDocs(refChat).then(snapshot => {
+            // La clase del snapshot (QueryDocumentSnapshot) ofrece algunas
+            // formas de poder consumir de una manera limpia los valores que
+            // recibimos.
+
+            // Si hacemos un console.log del snapshot, vamos a ver muchos
+            // datos internos de Firebase/Firestore que no nos son relevantes.
+            console.log("Snapshot: ", snapshot);
+
+            // Hay 2 formas de manejar los datos que llegan:
+            // 1. Usando el método forEach().
+            // 2. Pidiendo los datos como un array.
+
+            // Forma 1.
+            snapshot.forEach(doc => {
+                console.log("Documento: ", doc);
+
+                // Pedimos los datos del documento como un objeto.
+                console.log("Datos del Documento: ", doc.data());
+            });
+
+            // Forma 2.
+            console.log("Mensajes: ", snapshot.docs);
+        });
+      </script>
+</body>
+</html>
