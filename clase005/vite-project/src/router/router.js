@@ -5,10 +5,10 @@ import Login from "../pages/Login.vue";
 import Register from "../pages/Register.vue";
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/chat', component: Chat },
-    { path: '/iniciar-sesion', component: Login },
-    { path: '/registro', component: Register },
+    { path: '/',                    component: Home },
+    { path: '/chat',                component: Chat },
+    { path: '/iniciar-sesion',      component: Login },
+    { path: '/registro',            component: Register },
 ];
 
 const router = createRouter({
